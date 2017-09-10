@@ -1,0 +1,9 @@
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\bin\Debug\music_tag_checker.exe.config
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\bin\Debug\music_tag_checker.exe
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\bin\Debug\music_tag_checker.pdb
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\obj\Debug\music_tag_checker.exe
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\obj\Debug\music_tag_checker.pdb
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\bin\Debug\policy.2.0.taglib-sharp.dll
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\bin\Debug\taglib-sharp.dll
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\bin\Debug\policy.2.0.taglib-sharp.config
+F:\Dateien von Janosh\it\development\c#\music_tag_checker\music_tag_checker\music_tag_checker\obj\Debug\music_tag_checker.csprojResolveAssemblyReference.cache
