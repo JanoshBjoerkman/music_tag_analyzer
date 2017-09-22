@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="albumname_equals_foldername_check.cs" />
     <Compile Include="check.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="NoGenreCheck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

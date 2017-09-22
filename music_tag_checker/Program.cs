@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+// remove when finished
+using System.Diagnostics;
 
 namespace music_tag_checker
 {
@@ -42,6 +44,51 @@ namespace music_tag_checker
         public static void moveToCorrespondingFolder()
         {
             HashSet<string> files = new HashSet<string>(GetFileList("*.mp3"));
+            Dictionary<string, string> File_ShouldBeFolder_Map = new Dictionary<string, string>();
+
+            // map files to shouldBeFoldername (album tag)
+            foreach (var file in files)
+            {
+                TagLib.File mp3file = TagLib.File.Create(file);
+                string shouldBeFoldername = mp3file.Tag.Album.ToString();
+                File_ShouldBeFolder_Map.Add(file, shouldBeFoldername);
+            }
+
+            // filter hashset: remove all correct files
+            files.RemoveWhere(x => Directory.GetParent(x).Name.ToString() == File_ShouldBeFolder_Map[x].ToString());
+
+            // move files 
+            foreach (var file in files)
+            {
+                try
+                {
+                    TagLib.File mp3file = TagLib.File.Create(file);
+                    string newFolderName = mp3file.Tag.Album;
+                    Directory.CreateDirectory(newFolderName);
+                    string fullDestinationPath = Path.GetFullPath(Path.Combine(newFolderName, Path.GetFileName(file)));
+                    bool doesTheCurrentFileInThisFolderExists = (File.Exists(fullDestinationPath));
+                    bool isTheCurrentFileInTheListBigger = fileSizeCompare(file, fullDestinationPath);
+                    if (doesTheCurrentFileInThisFolderExists)
+                    {
+                        if (isTheCurrentFileInTheListBigger)
+                        {
+                            File.Delete(fullDestinationPath);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    File.Move(file, fullDestinationPath);
+                }
+                catch (Exception)
+                {
+                    // TODO: add error to logfile
+                }
+            }
+
+
+            /*
             foreach (var file in files)
             {
                 TagLib.File mp3file = TagLib.File.Create(file);
@@ -69,25 +116,12 @@ namespace music_tag_checker
                     System.IO.File.Move(file, System.IO.Path.Combine(foldername, System.IO.Path.GetFileName(file)));
                 }
             }
-
-            /*
-            List<string> files = new List<string>(GetFileList("*.mp3"));
-            foreach (var file in files)
-            {
-                TagLib.File mp3file = TagLib.File.Create(file);
-                string foldername = mp3file.Tag.Album;
-                // check if folder exists
-                if (System.IO.Directory.Exists(foldername))
-                {
-                    // check if file in this exists
-                    if (System.IO.File.Exists(System.IO.Path.Combine(foldername, System.IO.Path.GetFileName(file))))
-                    {
-                        Console.WriteLine(file);
-                        Console.ReadLine();
-                    }
-                }
-            }
             */
+        }
+
+        private static bool fileSizeCompare(string fileInList, string fileInFolder)
+        {
+            return true;
         }
 
         // copy+paste from: https://stackoverflow.com/questions/2811509/c-sharp-remove-all-empty-subdirectories
