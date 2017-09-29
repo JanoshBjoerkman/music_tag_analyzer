@@ -86,37 +86,6 @@ namespace music_tag_checker
                     // TODO: add error to logfile
                 }
             }
-
-
-            /*
-            foreach (var file in files)
-            {
-                TagLib.File mp3file = TagLib.File.Create(file);
-                string foldername = mp3file.Tag.Album;
-                bool doesAFolderNamedAfterTheAlbumTagExists = (System.IO.Directory.Exists(foldername));
-                bool doesTheCurrentFileInThisFolderExists = (System.IO.File.Exists(System.IO.Path.Combine(foldername, System.IO.Path.GetFileName(file))));
-                if (!doesAFolderNamedAfterTheAlbumTagExists)
-                {
-                    System.IO.Directory.CreateDirectory(foldername);
-                }
-                bool shouldFileBeMoved = true;
-                if (doesTheCurrentFileInThisFolderExists)
-                {
-                    long fileLength = new System.IO.FileInfo(file).Length;
-                    long alreadyExistingFileLength = new System.IO.FileInfo(System.IO.Path.Combine(foldername, System.IO.Path.GetFileName(file))).Length;
-                    bool isTheCurrentFileBigger = (fileLength > alreadyExistingFileLength);
-                    if (!isTheCurrentFileBigger)
-                    {
-                        shouldFileBeMoved = false;
-                    }
-                }
-                if (shouldFileBeMoved)
-                {
-                    // move bitch
-                    System.IO.File.Move(file, System.IO.Path.Combine(foldername, System.IO.Path.GetFileName(file)));
-                }
-            }
-            */
         }
 
         private static bool fileSizeCompare(string fileInList, string fileInFolder)

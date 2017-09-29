@@ -19,7 +19,8 @@ namespace music_tag_checker
             foreach (var file in allFiles)
             {
                 mp3file = TagLib.File.Create(file);
-                if (mp3file.Tag.FirstGenre != null)
+                bool GenreTagFound = ( !(String.IsNullOrEmpty(mp3file.Tag.FirstGenre) || String.IsNullOrWhiteSpace(mp3file.Tag.FirstGenre)) );
+                if (GenreTagFound)
                 {
                     failedFiles.Remove(file);
                 }
